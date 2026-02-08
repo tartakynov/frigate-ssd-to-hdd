@@ -70,12 +70,12 @@ docker exec -it nvr-sync nvr-sync.sh revert
 
 ### Endurance estimates
 
-| SSD capacity | Typical TBW | Years to reach TBW at 10 GB/day (2x WA) |
-|:-------------|:------------|:----------------------------------------|
-| 250 GB       | 150 TBW     | ~20 years                               |
-| 500 GB       | 300 TBW     | ~41 years                               |
-| 1 TB         | 600 TBW     | ~82 years                               |
-| 2 TB         | 1,200 TBW   | ~164 years                              |
+| Typical TBW | Years to reach TBW at 10 GB/day (2x WA) |
+|:------------|:----------------------------------------|
+| 150 TBW     | ~20 years                               |
+| 300 TBW     | ~41 years                               |
+| 600 TBW     | ~82 years                               |
+| 1,200 TBW   | ~164 years                              |
 
 **Important:** Write amplification increases as drives fill up. A 250 GB drive running near capacity will wear faster than these estimates suggest.
 
