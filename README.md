@@ -21,6 +21,32 @@ The script syncs the recordings folder between SSD and HDD without storing more 
 - **SSD → HDD:** Recordings on SSD that don't exist on HDD are moved to HDD, and symlinks are placed on the SSD so Frigate can still locate and replay them.
 - **HDD cleanup:** Recordings on HDD whose corresponding symlinks no longer exist on SSD are deleted. If Frigate removed a file, it no longer wants it, so the HDD copy is cleaned up too.
 
+## Docker Compose
+
+> **Important:** Both containers must mount the SSD and HDD to the **same paths** inside the container. The sync script creates absolute symlinks from SSD to HDD — if the mount paths differ between containers, Frigate will not be able to follow the symlinks.
+
+```yaml
+services:
+  frigate:
+    container_name: frigate
+    image: ghcr.io/blakeblackshear/frigate:stable
+    restart: unless-stopped
+    volumes:
+      - /path/to/ssd/frigate:/media/frigate
+      - /path/to/hdd/frigate:/media/frigate-hdd
+      # ... other volumes as needed
+
+  nvr-sync:
+    container_name: nvr-sync
+    build: .
+    restart: unless-stopped
+    volumes:
+      - /path/to/ssd/frigate:/media/frigate
+      - /path/to/hdd/frigate:/media/frigate-hdd
+```
+
+Replace `/path/to/ssd/frigate` and `/path/to/hdd/frigate` with the actual host paths for your SSD and HDD storage. The container-side paths (`/media/frigate` and `/media/frigate-hdd`) must stay the same in both containers.
+
 ## Reverting
 
 The script supports reverting to the original state — moving files back to SSD and cleaning up the HDD. Use this if you no longer want to run the script.
