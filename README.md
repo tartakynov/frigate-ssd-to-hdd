@@ -10,7 +10,7 @@ Both this container and Frigate share the same volume mounts:
 
 Frigate's constant read/write activity would prevent HDDs from spinning down, keeping them at peak power consumption 24/7.
 
-By letting Frigate write to SSD — where all Docker data also lives — HDDs are only accessed when users actively interact with the data (viewing recordings, editing photos/videos). This keeps HDDs in a low-power idle state most of the time.
+By letting Frigate write to SSD — where all Docker data also lives — HDDs are only accessed when users actively interact with the data (viewing recordings in Frigate, or accessing other data stored in the HDDs). This keeps HDDs in a low-power idle state most of the time.
 
 The trade-off is that SSD capacity fills up quickly with Frigate recordings. This script solves that by offloading recordings from SSD to HDD, waking the drives only briefly for the sync.
 
@@ -77,6 +77,6 @@ docker exec -it nvr-sync nvr-sync.sh revert
 | 600 TBW     | ~82 years                               |
 | 1,200 TBW   | ~164 years                              |
 
-**Important:** Write amplification increases as drives fill up. A 250 GB drive running near capacity will wear faster than these estimates suggest.
+Write amplification increases as drives fill up. A 250 GB drive running near capacity will wear faster than these estimates suggest.
 
-For larger drives (1+ TB), SSD wear is negligible — the drive will be obsolete before it wears out.
+In my case SSD wear is negligible — the drive will be obsolete before it wears out.
