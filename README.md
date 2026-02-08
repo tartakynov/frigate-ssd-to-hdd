@@ -52,3 +52,7 @@ Replace `/path/to/ssd/frigate` and `/path/to/hdd/frigate` with the actual host p
 ## Reverting
 
 The script supports reverting to the original state — moving files back to SSD and cleaning up the HDD. Use this if you no longer want to run the script.
+
+```bash
+docker exec -it nvr-sync nvr-sync.sh revert
+```
