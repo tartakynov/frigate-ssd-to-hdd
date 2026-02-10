@@ -88,7 +88,7 @@ revert() {
     log "Revert complete"
 }
 
-case "${1:-sync}" in
+case "${1:-}" in
     sync)
         sync_to_hdd
         cleanup_hdd
@@ -99,7 +99,7 @@ case "${1:-sync}" in
     revert)
         revert
         ;;
-    *)
+    ""|*)
         echo "Usage: $0 {sync|repair|revert}"
         exit 1
         ;;
