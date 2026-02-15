@@ -51,6 +51,8 @@ services:
     volumes:
       - /path/to/ssd/frigate:/media/frigate
       - /path/to/hdd/frigate:/media/frigate-hdd
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
 ```
 
 Replace `/path/to/ssd/frigate` and `/path/to/hdd/frigate` with your actual host paths. The container-side paths (`/media/frigate` and `/media/frigate-hdd`) must stay the same in both containers.
