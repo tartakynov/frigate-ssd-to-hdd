@@ -68,7 +68,7 @@ docker exec -it frigate-ssd-to-hdd ssd-to-hdd.sh repair
 
 To revert to the original state — moving files back to SSD and cleaning up the HDD:
 ```bash
-docker exec -it nfrigate-ssd-to-hdd ssd-to-hdd.sh revert
+docker exec -it frigate-ssd-to-hdd ssd-to-hdd.sh revert
 ```
 
 ## SSD wear
