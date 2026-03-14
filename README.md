@@ -31,6 +31,8 @@ The script syncs recordings between SSD and HDD without storing more data than F
 > [!IMPORTANT]  
 > Both containers must mount the SSD and HDD to the **same paths** inside the container. The sync script creates absolute symlinks from SSD to HDD — if mount paths differ between containers, Frigate won't be able to follow the symlinks.
 
+First, put this this repository next to your compose file in `frigate-ssd-to-hdd` folder.
+
 ```yaml
 services:
   frigate:
@@ -44,7 +46,7 @@ services:
 
   frigate-ssd-to-hdd:
     container_name: frigate-ssd-to-hdd
-    build: .
+    build: ./frigate-ssd-to-hdd/
     restart: unless-stopped
     environment:
       - CRON_SCHEDULE=0 2 * * *  # default: nightly at 2 AM
